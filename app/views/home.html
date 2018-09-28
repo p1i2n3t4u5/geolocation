@@ -1,39 +1,36 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-
-<head>
-    <title>TODO supply a title</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
 <div ng-controller="HomeController as ctrl">
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <form id='demo-form'  method="POST"  ng-submit="ctrl.submitCapcha()" novalidate="novalidate">
-            <div class="form-group"  >
-                    <label class="sr-only" for="register-firstname">First name</label>
-                    <input type="text" ng-model="ctrl.user.firstName"  name="registerfirstname" placeholder="First name" class="form-control" id="register-firstname" required="required">
-                </div>
-                <div class="form-group" >
-                    <label class="sr-only" for="register-lastname">Last name</label>
-                    <input type="text" ng-model="ctrl.user.lastName" name="registerlastname" placeholder="Last name" class="form-control" id="register-lastname" required="required">
-                </div>
-                <div class="form-group" >
-                    <label class="sr-only" for="register-email">Email</label>
-                    <input type="email" ng-model="ctrl.user.email"  name="registeremail" placeholder="Email" class="form-control" id="register-email"  required="required">
-                </div>
-                <div class="form-group"  >
-                    <label class="sr-only" for="register-phone">Phone</label>
-                    <input type="text" ng-model="ctrl.user.phone"  ng-pattern="/^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/"  ng-pattern-err-type="badPhoneNumber"   name="registerphone" placeholder="Phone" class="form-control" id="register-phone" required="required">
-                </div>
-                <div class="form-group"  >
-                   <div vc-recaptcha key="'6LcZcGIUAAAAAGMDQNCGt-AvCogKURsLHjqtvCH7'"  ng-model="ctrl.user.capcha"></div>
-                </div>
-                <button type="submit" class="btn">Sign me up!</button>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <form id='demo-form' method="POST" ng-submit="ctrl.submitCapcha()" novalidate="novalidate">
+        <div class="form-group">
+            <label class="sr-only" for="register-firstname">First name</label>
+            <input type="text" ng-model="ctrl.user.firstName" name="registerfirstname" placeholder="First name" class="form-control"
+                id="register-firstname" required="required">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="register-lastname">Last name</label>
+            <input type="text" ng-model="ctrl.user.lastName" name="registerlastname" placeholder="Last name" class="form-control" id="register-lastname"
+                required="required">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="register-email">Email</label>
+            <input type="email" ng-model="ctrl.user.email" name="registeremail" placeholder="Email" class="form-control" id="register-email"
+                required="required">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="register-phone">Phone</label>
+            <input type="text" ng-model="ctrl.user.phone" ng-pattern="/^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/" ng-pattern-err-type="badPhoneNumber"
+                name="registerphone" placeholder="Phone" class="form-control" id="register-phone" required="required">
+        </div>
+        <div class="form-group">
+            <div vc-recaptcha key="'6LcZcGIUAAAAAGMDQNCGt-AvCogKURsLHjqtvCH7'" ng-model="ctrl.user.capcha"></div>
+        </div>
+        <button type="submit" class="btn">Sign me up!</button>
 
-                <flash-message duration="5000" show-close="true" on-dismiss="myCallback(flash)"></flash-message>
+        <flash-message duration="5000" show-close="true" on-dismiss="myCallback(flash)"></flash-message>
+
+        <modal visible="showModal">
+            Any additional data / buttons
+        </modal>
+        <button ng-click="toggleModal('Success')" type="button" class="btn">Show Popup</button>
     </form>
 </div>

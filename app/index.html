@@ -24,7 +24,7 @@
 
     <script src="all.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="all.min.css">
-    
+
 
     <script src="app.js"></script>
     <script src="controllers/HomeController.js" type="text/javascript"></script>
@@ -35,7 +35,7 @@
     <script src="services/LoginService.js" type="text/javascript"></script>
     <script src="services/Config.js" type="text/javascript"></script>
 
-    
+
 
     <!-- <script src="components/version/version.js"></script>
     <script src="components/version/version-directive.js"></script>
@@ -43,7 +43,7 @@
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-    
+
     <link rel="icon" type="image/png" href="images/icon.png">
     <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -52,6 +52,26 @@
 
 <body ng-app="myapp">
     <ui-view></ui-view>
+    <button onclick="test()">Click</button>
 </body>
+<script>
+    function test() {
+        alert("ok");
+        jQuery.support.cors = true;
+        $.ajax({
+            url: 'http://localhost:8080/SpringGeolocation/login',
+            type: 'POST',
+            dataType: 'json',
+            data: "username=pintu&password=pintu12345",
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    }
+</script>
+
 
 </html>
