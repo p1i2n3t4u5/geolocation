@@ -8,7 +8,6 @@ framework and a bunch of development and testing tools for instant web developme
 
 The seed app doesn't do much, just shows how to wire two controllers and views together.
 
-
 ## Getting Started
 
 To get you started you can simply clone the `angular-seed` repository and install the dependencies:
@@ -42,9 +41,9 @@ The `depth=1` tells git to only pull down one commit worth of historical data.
 We have two kinds of dependencies in this project: tools and Angular framework code. The tools help
 us manage and test the application.
 
-* We get the tools we depend upon via `npm`, the [Node package manager][npm].
-* We get the Angular code via `bower`, a [client-side code package manager][bower].
-* In order to run the end-to-end tests, you will also need to have the
+- We get the tools we depend upon via `npm`, the [Node package manager][npm].
+- We get the Angular code via `bower`, a [client-side code package manager][bower].
+- In order to run the end-to-end tests, you will also need to have the
   [Java Development Kit (JDK)][jdk] installed on your machine. Check out the section on
   [end-to-end testing](#e2e-testing) for more info.
 
@@ -57,12 +56,12 @@ npm install
 Behind the scenes this will also call `bower install`. After that, you should find out that you have
 two new folders in your project.
 
-* `node_modules` - contains the npm packages for the tools we need
-* `app/bower_components` - contains the Angular framework files
+- `node_modules` - contains the npm packages for the tools we need
+- `app/bower_components` - contains the Angular framework files
 
-*Note that the `bower_components` folder would normally be installed in the root folder but
+_Note that the `bower_components` folder would normally be installed in the root folder but
 `angular-seed` changes this location through the `.bowerrc` file. Putting it in the `app` folder
-makes it easier to serve the files by a web server.*
+makes it easier to serve the files by a web server._
 
 ### Run the Application
 
@@ -74,7 +73,6 @@ npm start
 ```
 
 Now browse to the app at [`localhost:8000/index.html`][local-app-url].
-
 
 ## Directory Layout
 
@@ -106,7 +104,6 @@ e2e-tests/            --> end-to-end tests
   scenarios.js          --> end-to-end scenarios to be run by Protractor
 ```
 
-
 ## Testing
 
 There are two kinds of tests in the `angular-seed` application: Unit tests and end-to-end tests.
@@ -116,8 +113,8 @@ There are two kinds of tests in the `angular-seed` application: Unit tests and e
 The `angular-seed` app comes preconfigured with unit tests. These are written in [Jasmine][jasmine],
 which we run with the [Karma][karma] test runner. We provide a Karma configuration file to run them.
 
-* The configuration is found at `karma.conf.js`.
-* The unit tests are found next to the code they are testing and have an `_test.js` suffix (e.g.
+- The configuration is found at `karma.conf.js`.
+- The unit tests are found next to the code they are testing and have an `_test.js` suffix (e.g.
   `view1_test.js`).
 
 The easiest way to run the unit tests is to use the supplied npm script:
@@ -140,16 +137,16 @@ predefined script to do this:
 npm run test-single-run
 ```
 
-
 <a name="e2e-testing"></a>
+
 ### Running End-to-End Tests
 
 The `angular-seed` app comes with end-to-end tests, again written in [Jasmine][jasmine]. These tests
 are run with the [Protractor][protractor] End-to-End test runner. It uses native events and has
 special features for Angular applications.
 
-* The configuration is found at `e2e-tests/protractor-conf.js`.
-* The end-to-end tests are found in `e2e-tests/scenarios.js`.
+- The configuration is found at `e2e-tests/protractor-conf.js`.
+- The end-to-end tests are found in `e2e-tests/scenarios.js`.
 
 Protractor simulates interaction with our web app and verifies that the application responds
 correctly. Therefore, our web server needs to be serving up the application, so that Protractor can
@@ -187,7 +184,6 @@ the [Java Development Kit (JDK)][jdk] to be installed on your local machine. Che
 
 If JDK is not already installed, you can download it [here][jdk-download].
 
-
 ## Updating Angular
 
 Since the Angular framework library code and tools are acquired through package managers (npm and
@@ -202,7 +198,6 @@ This will call `npm update` and `bower update`, which in turn will find and inst
 versions that match the version ranges specified in the `package.json` and `bower.json` files
 respectively.
 
-
 ## Loading Angular Asynchronously
 
 The `angular-seed` project supports loading the framework and application scripts asynchronously.
@@ -216,7 +211,6 @@ npm run update-index-async
 
 This will copy the contents of the `angular-loader.js` library file into the `index-async.html`
 page. You can run this every time you update the version of Angular that you are using.
-
 
 ## Serving the Application Files
 
@@ -259,7 +253,6 @@ what is the best way to host the static files to comply with the same origin pol
 Usually this is done by hosting the files by the backend server or through reverse-proxying the
 backend server(s) and web server(s).
 
-
 ## Continuous Integration
 
 ### Travis CI
@@ -272,11 +265,9 @@ tests when you push to GitHub.
 You will need to enable the integration between Travis and GitHub. See the
 [Travis website][travis-docs] for instructions on how to do this.
 
-
 ## Contact
 
 For more information on AngularJS please check out [angularjs.org][angularjs].
-
 
 [angularjs]: https://angularjs.org/
 [bower]: http://bower.io/
@@ -293,3 +284,22 @@ For more information on AngularJS please check out [angularjs.org][angularjs].
 [selenium]: http://docs.seleniumhq.org/
 [travis]: https://travis-ci.org/
 [travis-docs]: https://docs.travis-ci.com/user/getting-started
+
+<!-- <script>
+    function test() {
+        alert("ok");
+        jQuery.support.cors = true;
+        $.ajax({
+            url: 'http://localhost:8080/SpringGeolocation/login',
+            type: 'POST',
+            dataType: 'json',
+            data: "username=pintu&password=pintu12345",
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    }
+</script> -->

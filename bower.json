@@ -15,5 +15,8 @@
     "angular-flash-alert": "2.4.0",
     "angular-auto-validate": "^1.19.6",
     "angular-recaptcha": "^4.1.5"
+  },
+  "resolutions": {
+    "bootstrap": "3.3.7"
   }
 }
