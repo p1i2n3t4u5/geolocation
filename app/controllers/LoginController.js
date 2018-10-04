@@ -15,14 +15,24 @@ mainApp.controller("LoginController", [
   "Flash",
   "LoginService",
   "$state",
-  function($log, $scope, $location, $rootScope, Flash, LoginService, $state) {
+  "StorageService",
+  "cfg",
+  function(
+    $log,
+    $scope,
+    $location,
+    $rootScope,
+    Flash,
+    LoginService,
+    $state,
+    StorageService,
+    cfg
+  ) {
     var self = this;
     self.loginForm = { username: "", password: "" };
     self.authenticateUser = authenticateUser;
 
     function authenticateUser() {
-      console.log(this);
-      console.log(self);
       console.log(
         "inside login controller" +
           this.loginForm.username +
@@ -32,7 +42,15 @@ mainApp.controller("LoginController", [
       LoginService.authenticateUser(this.loginForm).then(
         function(successResponse) {
           console.log(successResponse);
-          /* $state.go('loginregister.register'); */
+          //STORING USER DATA TO SESSION STORAGE
+          StorageService.set(cfg.USER.ID, successResponse.id);
+          StorageService.set(cfg.USER.FIRSTNAME, successResponse.firstName);
+          StorageService.set(cfg.USER.LASTNAME, successResponse.lastName);
+          StorageService.set(cfg.USER.EMAIL, successResponse.email);
+          StorageService.set(cfg.USER.PHONE, successResponse.phone);
+          StorageService.set(cfg.USER.LOGIN, successResponse.login);
+          StorageService.set(cfg.USER.ROLES, successResponse.roles);
+
           $state.go("home");
         },
         function(errResponse) {

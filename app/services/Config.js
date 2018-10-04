@@ -7,25 +7,22 @@
 mainApp.constant("cfg", {
   url: "http://localhost:8080/SpringGeolocation",
   httpTimeout: 5000,
-  ROLES: {
-    admin: "SYS_ADMIN",
-    user: "SYS_USER",
-    guest: "SYS_GUEST"
-  },
+
   LOGIN_TYPE: {
     facebook: "FACEBOOK",
     gmail: "GMAIL",
     twitter: "TWITTER",
     registered: "REGISTERED"
   },
-  VENDOR_TYPE: {
-    photographer: "PHOTOGRAPHER",
-    caterer: "CATERER",
-    dressdesigner: "DRESSDESIGNER"
-  },
-  USER_TYPE: {
-    consumer: "CONSUMER",
-    vendor: "VENDOR"
+  USER: {
+    ID: "USER.ID",
+    FIRSTNAME: "USER.FIRSTNAME",
+    LASTNAME: "USER.LASTNAME",
+    EMAIL: "USER.EMAIL",
+    PHONE: "USER.PHONE",
+    LOGIN: "USER.LOGIN",
+    ROLES: "USER.ROLES"
   }
+
   //global constants
 });

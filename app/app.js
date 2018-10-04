@@ -92,8 +92,8 @@ mainApp.config([
       .state("home", {
         url: "/home",
         templateUrl: "views/home.html",
-        controller: "LoginRegisterController",
-        controllerAs: "regisCtrl"
+        controller: "HomeController",
+        controllerAs: "homeCtrl"
       });
   }
 ]);

@@ -14,9 +14,11 @@
     "html5-boilerplate": "^5.3.0",
     "angular-flash-alert": "2.4.0",
     "angular-auto-validate": "^1.19.6",
-    "angular-recaptcha": "^4.1.5"
+    "angular-recaptcha": "^4.1.5",
+    "font-awesome": "fontawesome#4.7"
   },
   "resolutions": {
-    "bootstrap": "3.3.7"
+    "bootstrap": "3.3.7",
+    "font-awesome": "4.7"
   }
 }
