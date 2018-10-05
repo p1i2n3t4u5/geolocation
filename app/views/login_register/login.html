@@ -1,4 +1,6 @@
-<div id="loginTab" ng-controller="LoginController as ctrl">
+<!-- <div id="loginTab" ng-controller="LoginController as ctrl"> -->
+<!-- ctrl getting injected from the route provider -->
+<div id="loginTab">
     <flash-message duration="5000" show-close="true" on-dismiss="myCallback(flash)"></flash-message>
     <div class="innter-form">
         <form role="form" name="loginForm" method="post" ng-submit="ctrl.authenticateUser()" novalidate="novalidate">
@@ -14,10 +16,6 @@
             </div>
             <button type="submit" class="btn">Sign In</button>
         </form>
-        <!-- <div>{{ctrl.loginForm.username}}</div>
-        <div>{{ctrl.loginForm.password}}</div>
-        <div>{{ctrl.loginForm}}</div>
-        <div>{{ctrl}}</div> -->
     </div>
     <div class="social-login">
         <p>- - - - - - - - - - - - - Sign In With - - - - - - - - - - - - - </p>

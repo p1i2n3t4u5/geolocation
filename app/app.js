@@ -2,6 +2,9 @@
 
 /* global FB, $window */
 
+var $stateProviderRef = null;
+var $urlRouterProviderRef = null;
+
 window.fbAsyncInit = function() {
   FB.init({
     appId: "974762349267261",
@@ -31,8 +34,6 @@ var mainApp = angular.module("myapp", [
   "vcRecaptcha"
 ]);
 
-// angular.module(‘angularRecaptcha’,[‘vcRecaptcha’])
-
 mainApp.run(function(defaultErrorMessageResolver) {
   defaultErrorMessageResolver.getErrorMessages().then(function(errorMessages) {
     errorMessages["tooYoung"] =
@@ -46,6 +47,18 @@ mainApp.run(function(defaultErrorMessageResolver) {
     errorMessages["badPhoneNumber"] = "Phone number is not  valid ";
   });
 });
+
+mainApp.run([
+  "$rootScope",
+  "$state",
+  "$stateParams",
+  function($rootScope, $state, $stateParams) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+  }
+]);
+// .controller("AController", ["$scope", function($scope) {}])
+// .controller("SController", ["$scope", function($scope) {}]);
 
 mainApp.config([
   "$routeProvider",
@@ -71,7 +84,7 @@ mainApp.config([
         url: "/loginregister",
         templateUrl: "views/login_register.html",
         controller: "LoginRegisterController",
-        controllerAs: "regisCtrl",
+        controllerAs: "ctrl",
         abstract: true
       })
       // nested list with custom controller
@@ -79,62 +92,63 @@ mainApp.config([
         url: "/register",
         templateUrl: "views/login_register/register.html",
         controller: "RegisterController",
-        controllerAs: "regisCtrl"
+        controllerAs: "ctrl"
       })
       // nested list with custom controller
       .state("loginregister.login", {
         url: "/login",
         templateUrl: "views/login_register/login.html",
         controller: "LoginController",
-        controllerAs: "loginCtrl"
+        controllerAs: "ctrl"
       })
 
       .state("home", {
         url: "/home",
         templateUrl: "views/home.html",
         controller: "HomeController",
-        controllerAs: "homeCtrl"
+        controllerAs: "ctrl"
       });
+
+    $stateProviderRef = $stateProvider;
+    $urlRouterProviderRef = $urlRouterProvider;
   }
 ]);
 
-mainApp.directive("modal", function() {
-  return {
-    template:
-      '<div class="modal fade">' +
-      '<div class="modal-dialog">' +
-      '<div class="modal-content">' +
-      '<div class="modal-header">' +
-      '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
-      '<h4 class="modal-title">{{ buttonClicked }} clicked!!</h4>' +
-      "</div>" +
-      '<div class="modal-body" ng-transclude></div>' +
-      "</div>" +
-      "</div>" +
-      "</div>",
-    restrict: "E",
-    transclude: true,
-    replace: true,
-    scope: true,
-    link: function postLink(scope, element, attrs) {
-      scope.title = attrs.title;
+mainApp.run([
+  "$q",
+  "$rootScope",
+  "$http",
+  "$urlRouter",
+  function($q, $rootScope, $http, $urlRouter) {
+    var $state = $rootScope.$state;
 
-      scope.$watch(attrs.visible, function(value) {
-        if (value == true) $(element).modal("show");
-        else $(element).modal("hide");
-      });
+    $http.get("modules.json").success(function(data) {
+      angular.forEach(data, function(value, key) {
+        var getExistingState = $state.get(value.name);
 
-      $(element).on("shown.bs.modal", function() {
-        scope.$apply(function() {
-          scope.$parent[attrs.visible] = true;
+        if (getExistingState !== null) {
+          return;
+        }
+
+        var state = {
+          url: value.url,
+          parent: value.parent,
+          abstract: value.abstract,
+          views: {}
+        };
+
+        angular.forEach(value.views, function(view) {
+          state.views[view.name] = {
+            templateUrl: view.templateUrl
+          };
         });
-      });
 
-      $(element).on("hidden.bs.modal", function() {
-        scope.$apply(function() {
-          scope.$parent[attrs.visible] = false;
-        });
+        $stateProviderRef.state(value.name, state);
       });
-    }
-  };
-});
+      // Configures $urlRouter's listener *after* your custom listener
+
+      $urlRouter.sync();
+      $urlRouter.listen();
+    });
+  }
+]);
