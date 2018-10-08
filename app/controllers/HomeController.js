@@ -17,6 +17,7 @@ mainApp.controller("HomeController", [
   "$state",
   "StorageService",
   "cfg",
+  "NavigationService",
   function(
     $log,
     $scope,
@@ -26,15 +27,27 @@ mainApp.controller("HomeController", [
     UserService,
     $state,
     StorageService,
-    cfg
+    cfg,
+    NavigationService
   ) {
     var self = this;
 
-    self.getUserData = getUserData;
+    self.getNavigations = getNavigations();
 
-    function getUserData() {
-      console.log(StorageService.get("USER.ID"));
-      console.log(StorageService.get("USER.FIRSTNAME"));
+    function getNavigations() {
+      NavigationService.findAllByUserTree(StorageService.get("USER.ID")).then(
+        function(successResponse) {
+          console.log(successResponse);
+          $state.go("dashboard");
+        },
+        function(errResponse) {
+          console.error("Error while creating User");
+          if (errResponse.status === 409) {
+            var message = "<strong>User with same login already exist</strong>";
+            Flash.create("danger", message);
+          }
+        }
+      );
     }
   }
 ]);
