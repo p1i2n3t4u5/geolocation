@@ -134,6 +134,8 @@ mainApp.run([
           url: value.url,
           parent: value.parent,
           abstract: value.abstract,
+          controller: value.controller,
+          controllerAs: value.controllerAs,
           views: {}
         };
 

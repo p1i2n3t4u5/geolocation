@@ -12,5 +12,173 @@
         "templateUrl": "views/home/dashboard.html"
       }
     ]
+  },
+  {
+    "name": "maps",
+    "url": "/maps",
+    "parent": "home",
+    "abstract": false,
+    "controller": "MapsController",
+    "controllerAs": "ctrl",
+    "views": [
+      {
+        "name": "",
+        "templateUrl": "views/home/maps.html"
+      }
+    ]
+  },
+  {
+    "name": "mapone",
+    "url": "/mapone",
+    "parent": "home",
+    "abstract": false,
+    "controller": "MapOneController",
+    "controllerAs": "ctrl",
+    "views": [
+      {
+        "name": "",
+        "templateUrl": "views/home/map_one.html"
+      }
+    ]
+  },
+  {
+    "name": "maptwo",
+    "url": "/maptwo",
+    "parent": "home",
+    "abstract": false,
+    "controller": "MapTwoController",
+    "controllerAs": "ctrl",
+    "views": [
+      {
+        "name": "",
+        "templateUrl": "views/home/map_two.html"
+      }
+    ]
+  },
+  {
+    "name": "mapthree",
+    "url": "/mapthree",
+    "parent": "home",
+    "abstract": false,
+    "controller": "MapThreeController",
+    "controllerAs": "ctrl",
+    "views": [
+      {
+        "name": "",
+        "templateUrl": "views/home/map_three.html"
+      }
+    ]
+  },
+  {
+    "name": "new",
+    "url": "/new",
+    "parent": "home",
+    "abstract": false,
+    "controller": "NewController",
+    "controllerAs": "ctrl",
+    "views": [
+      {
+        "name": "",
+        "templateUrl": "views/home/new.html"
+      }
+    ]
+  },
+  {
+    "name": "newone",
+    "url": "/newone",
+    "parent": "home",
+    "abstract": false,
+    "controller": "NewOneController",
+    "controllerAs": "ctrl",
+    "views": [
+      {
+        "name": "",
+        "templateUrl": "views/home/new_one.html"
+      }
+    ]
+  },
+  {
+    "name": "newtwo",
+    "url": "/newtwo",
+    "parent": "home",
+    "abstract": false,
+    "controller": "NewTwoController",
+    "controllerAs": "ctrl",
+    "views": [
+      {
+        "name": "",
+        "templateUrl": "views/home/new_two.html"
+      }
+    ]
+  },
+  {
+    "name": "profile",
+    "url": "/profile",
+    "parent": "home",
+    "abstract": false,
+    "controller": "ProfileController",
+    "controllerAs": "ctrl",
+    "views": [
+      {
+        "name": "",
+        "templateUrl": "views/home/profile.html"
+      }
+    ]
+  },
+  {
+    "name": "users",
+    "url": "/users",
+    "parent": "home",
+    "abstract": false,
+    "controller": "UsersController",
+    "controllerAs": "ctrl",
+    "views": [
+      {
+        "name": "",
+        "templateUrl": "views/home/users.html"
+      }
+    ]
+  },
+  {
+    "name": "services",
+    "url": "/services",
+    "parent": "home",
+    "abstract": false,
+    "controller": "ServicesController",
+    "controllerAs": "ctrl",
+    "views": [
+      {
+        "name": "",
+        "templateUrl": "views/home/services.html"
+      }
+    ]
+  },
+  {
+    "name": "serviceone",
+    "url": "/serviceone",
+    "parent": "home",
+    "abstract": false,
+    "controller": "ServiceOneController",
+    "controllerAs": "ctrl",
+    "views": [
+      {
+        "name": "",
+        "templateUrl": "views/home/service_one.html"
+      }
+    ]
+  },
+  {
+    "name": "servicetwo",
+    "url": "/servicetwo",
+    "parent": "home",
+    "abstract": false,
+    "controller": "ServiceTwoController",
+    "controllerAs": "ctrl",
+    "views": [
+      {
+        "name": "",
+        "templateUrl": "views/home/service_two.html"
+      }
+    ]
   }
 ]
