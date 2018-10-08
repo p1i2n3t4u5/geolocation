@@ -31,6 +31,7 @@ mainApp.controller("HomeController", [
     NavigationService
   ) {
     var self = this;
+    self.navs = undefined;
 
     self.getNavigations = getNavigations();
 
@@ -38,6 +39,7 @@ mainApp.controller("HomeController", [
       NavigationService.findAllByUserTree(StorageService.get("USER.ID")).then(
         function(successResponse) {
           console.log(successResponse);
+          self.navs = successResponse;
           $state.go("dashboard");
         },
         function(errResponse) {
