@@ -1,6 +1,7 @@
 /build/
 /deploy/
 /benchpress-build/
+/app/bower_components
 .DS_Store
 gen_docs.disable
 test.disable
