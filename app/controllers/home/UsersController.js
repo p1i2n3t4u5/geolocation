@@ -81,7 +81,7 @@ mainApp.controller("UsersController", [
   }
 
   function createUser(user) {
-      console.log("USER "+user);
+      
     UserService.createUser(user)
         .then(
             function (successResponse) {

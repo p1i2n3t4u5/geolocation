@@ -33,6 +33,7 @@ var mainApp = angular.module("myapp", [
   "jcs-autoValidate",
   "vcRecaptcha",
   "smart-table"
+  "ngMap"
 ]);
 
 mainApp.run(function(defaultErrorMessageResolver) {

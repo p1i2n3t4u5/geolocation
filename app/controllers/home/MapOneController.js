@@ -17,6 +17,7 @@ mainApp.controller("MapOneController", [
   "$state",
   "StorageService",
   "cfg",
+  "NgMap",
   function(
     $log,
     $scope,
@@ -26,15 +27,18 @@ mainApp.controller("MapOneController", [
     UserService,
     $state,
     StorageService,
-    cfg
+    cfg,
+    NgMap
   ) {
     var self = this;
 
-    self.getUserData = getUserData;
+    // self.googleMapsUrl =
+    //   "https://maps.googleapis.com/maps/api/js?key=AIzaSyDbcJ-HDROUl8lgUHizqbqPQ7B3LTNejlc";
 
-    function getUserData() {
-      console.log(StorageService.get("USER.ID"));
-      console.log(StorageService.get("USER.FIRSTNAME"));
-    }
+    NgMap.getMap().then(function(map) {
+      console.log(map.getCenter());
+      console.log("markers", map.markers);
+      console.log("shapes", map.shapes);
+    });
   }
 ]);
