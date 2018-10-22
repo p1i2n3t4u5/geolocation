@@ -1,4 +1,89 @@
-<div>
-    <h1>Users</h1>
-    {{ctrl}}
+<div ng-controller="UsersController as ctrl">
+<button type="button" ng-click="toggle()" class="btn btn-sm btn-success">
+     <i class="glyphicon glyphicon-plus">
+     </i> Add User
+</button>
+<form>
+                <label for="predicate">selected predicate:</label>
+                <select class="form-control" id="predicate" ng-model="selectedPredicate" ng-options="predicate for predicate in predicates"></select>
+</form>
+<table st-table="displayedcollection" st-safe-src="ctrl.getUserData" class="table table-striped">
+    <thead>
+            <tr>
+                    <th><input st-search="firstName" placeholder="Search for firstName" class="input-sm form-control" type="search"></th>
+                    <th>
+                        <input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+                    </th>
+                    <th>
+                        <input st-search="{{selectedPredicate}}" placeholder="bound predicate" class="input-sm form-control" type="search"/>
+                    </th>
+                </tr>
+    <tr>
+        <th st-sort="id">Id</th>
+        <th st-sort="email">Email</th>
+        <th st-sort="firstName">First Name</th>
+        <th st-sort="lastName">Last Name</th>
+        <th st-sort="login">Login Id</th>
+        <th st-sort="phone">Phone</th>
+    </tr>
+    
+</thead>    
+<tbody>
+    <tr ng-repeat="x in displayedcollection">
+        <td>{{x.id}}</td>
+        <td><button class="btn btn-sm" popover-placement="top" popover="{{x.email}}" type="button">
+				<i class="glyphicon glyphicon-eye-open"></i>
+			</button>
+			<a ng-href="mailto:{{x.email}}">email</a></td>
+        <td>{{x.firstName | uppercase }}</td>
+        <td>{{x.lastName}}</td>
+        <td>{{x.login}}</td>
+        <td>{{x.phone}}</td>
+    </tr>
+  <!--  <tfoot>
+			<tr>
+				<td colspan="5" class="text-center">
+					<div st-pagination="" st-items-by-page="1" st-displayed-pages="3"></div>
+				</td>
+			</tr>
+		</tfoot> -->
+</tbody>
+</table>
+<div class="innter-form" ng-show="showForm">
+                <form role="form"  name="registerForm"  method="post"  ng-submit="ctrl.submit()"   novalidate="novalidate">
+                    <div class="form-group"  >
+                        <input type="hidden" ng-model="ctrl.user.id" />
+                    </div>
+                    <div class="form-group"  >
+                        <label class="sr-only" for="register-firstname">First name</label>
+                        <input type="text" ng-model="ctrl.user.firstName"  name="registerfirstname" placeholder="First name" class="form-control" id="register-firstname" required="required">
+                    </div>
+                    <div class="form-group" >
+                        <label class="sr-only" for="register-lastname">Last name</label>
+                        <input type="text" ng-model="ctrl.user.lastName" name="registerlastname" placeholder="Last name" class="form-control" id="register-lastname" required="required">
+                    </div>
+                    <div class="form-group" >
+                        <label class="sr-only" for="register-email">Email</label>
+                        <input type="email" ng-model="ctrl.user.email"  name="registeremail" placeholder="Email" class="form-control" id="register-email"  required="required">
+                    </div>
+                    <div class="form-group"  >
+                        <label class="sr-only" for="register-phone">Phone</label>
+                        <input type="text" ng-model="ctrl.user.phone"  ng-pattern="/^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/"  ng-pattern-err-type="badPhoneNumber"   name="registerphone" placeholder="Phone" class="form-control" id="register-phone" required="required">
+                    </div>
+                    <div class="form-group" >
+                        <label class="sr-only" for="register-login">Login</label>
+                        <input type="text"  ng-model="ctrl.user.login"  ng-pattern="/[a-zA-Z0-9]+/"  ng-pattern-err-type="badUserName"  ng-minlength="8" name="registerlogin" placeholder="Login" class="form-control" id="register-login"  required="required">
+                    </div>
+                    <div class="form-group" >
+                        <label class="sr-only" for="register-password">Password</label>
+                        <input type="password"  ng-model="ctrl.user.password" ng-pattern="/[a-zA-Z0-9]+/" ng-pattern-err-type="badPassword" ng-minlength="8" name="registerpassword" placeholder="Password" class="form-control" id="register-password" required="required">
+                    </div>
+                    <div class="form-group" >
+                        <label class="sr-only" for="register-repassword">Re Enter Password</label>
+                        <input type="password"  ng-model="ctrl.user.repassword" ng-pattern="/[a-zA-Z0-9]+/"   ng-minlength="8" name="registerrepassword" placeholder="Re-Password" class="form-control" id="register-repassword" required="required">
+                    </div>
+                    <button type="submit" class="btn">Sign me up!</button>
+                </form>
+            </div>
 </div>
+

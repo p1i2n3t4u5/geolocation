@@ -31,7 +31,8 @@ var mainApp = angular.module("myapp", [
   "ui.router",
   "ngFlash",
   "jcs-autoValidate",
-  "vcRecaptcha"
+  "vcRecaptcha",
+  "smart-table"
 ]);
 
 mainApp.run(function(defaultErrorMessageResolver) {
