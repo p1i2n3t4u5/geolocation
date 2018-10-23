@@ -61,6 +61,7 @@ mainApp.controller("UsersController", [
         if (self.user.id === null) {
             console.log('Saving New User', self.user);
             createUser(self.user);
+            alert("Called createuser");
         } else {
             updateUser(self.user, self.user.id);
             console.log('User updated with id ', self.user.id);
@@ -81,15 +82,15 @@ mainApp.controller("UsersController", [
   }
 
   function createUser(user) {
-      
+    alert(JSON.stringify(user));
     UserService.createUser(user)
         .then(
-            function (successResponse) {
-                console.log(successResponse);
+       function (successResponse) {
+                console.log("successresponse "+successResponse);
                 alert("successfully added");
             },
             function (errResponse) {
-                console.log(errResponse);
+                console.log("errresponse "+errResponse);
              
                 console.error('Error while creating User');
                 if (errResponse.status === 409) {
