@@ -11,7 +11,7 @@
 mainApp.factory(
     "UserService",
     function($http, $q, cfg) {
-        var REST_SERVICE_URI = cfg.url + "/user/";
+        var REST_SERVICE_URI = cfg.url + "/user";
 
         var factory = {
             fetchAllUsers: fetchAllUsers,
@@ -56,13 +56,16 @@ mainApp.factory(
 
 
         function createUser(user) {
+            alert("service createuser "+JSON.stringify(user));
             var deferred = $q.defer();
             $http.post(REST_SERVICE_URI, user)
                 .then(
                     function(response) {
+                        alert("Service called user success");
                         deferred.resolve(response.data);
                     },
                     function(errResponse) {
+                        alert("Service called user failed");
                         console.error('Error while creating User');
                         deferred.reject(errResponse);
                     }
