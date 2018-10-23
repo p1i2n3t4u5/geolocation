@@ -32,7 +32,7 @@ var mainApp = angular.module("myapp", [
   "ngFlash",
   "jcs-autoValidate",
   "vcRecaptcha",
-  "smart-table"
+  "smart-table",
   "ngMap"
 ]);
 

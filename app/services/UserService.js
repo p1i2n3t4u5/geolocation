@@ -58,6 +58,8 @@ mainApp.factory(
         function createUser(user) {
             alert("service createuser "+JSON.stringify(user));
             var deferred = $q.defer();
+            alert(" "+REST_SERVICE_URI);
+            alert(user);
             $http.post(REST_SERVICE_URI, user)
                 .then(
                     function(response) {

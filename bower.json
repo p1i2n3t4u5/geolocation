@@ -15,7 +15,9 @@
     "angular-flash-alert": "2.4.0",
     "angular-auto-validate": "^1.19.6",
     "angular-recaptcha": "^4.1.5",
-    "font-awesome": "fontawesome#4.7"
+    "font-awesome": "fontawesome#4.7",
+    "ngmap": "^1.18.4",
+    "angular-smart-table": "^2.1.11"
   },
   "resolutions": {
     "bootstrap": "3.3.7",
