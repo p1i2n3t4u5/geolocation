@@ -34,7 +34,8 @@ var mainApp = angular.module("myapp", [
   "vcRecaptcha",
   "smart-table",
   "ngMap",
-  "cp.ngConfirm"
+  "cp.ngConfirm",
+  "ui.bootstrap"
 ]);
 
 mainApp.run(function(defaultErrorMessageResolver) {

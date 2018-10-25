@@ -1,40 +1,54 @@
-{
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-  "version": "0.2.0",
-  "configurations": [
-      {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch Program",
-      "program": "${workspaceFolder}/app/app.js"
+// {
+//   // Use IntelliSense to learn about possible attributes.
+//   // Hover to view descriptions of existing attributes.
+//   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+//   "version": "0.2.0",
+//   "configurations": [
+//       {
+//       "type": "node",
+//       "request": "launch",
+//       "name": "Launch Program",
+//       "program": "${workspaceFolder}/app/app.js"
     
-  },
-    {
-      "type": "chrome",
-      "request": "launch",
-      "name": "Attach karma  Chrome",
-      "address": "127.0.0.1",
-      "port": 9333,
-      //"url": "http://localhost:8080",
-      "pathMapping": {
-        "/": "${workspaceFolder}",
-        "/base/": "${workspaceFolder}"
-      },
-      "webRoot": "${workspaceFolder}"
-    }, 
-  /*  {
-      "type": "chrome",
-      "request": "launch",
-      "name": "Launch Chrome",
-      "address": "127.0.0.1",
-      "url": "http://localhost:8000/",
-      "webRoot": "${workspaceRoot}/app",
-      "sourceMaps": true,
-      "userDataDir": "${workspaceRoot}/.vscode/chrome"
-    } */
-  ]
-}
+//   },
+//     {
+//       "type": "chrome",
+//       "request": "launch",
+//       "name": "Attach karma  Chrome",
+//       "address": "127.0.0.1",
+//       "port": 9333,
+//       //"url": "http://localhost:8080",
+//       "pathMapping": {
+//         "/": "${workspaceFolder}",
+//         "/base/": "${workspaceFolder}"
+//       },
+//       "webRoot": "${workspaceFolder}"
+//     }, 
+//   /*  {
+//       "type": "chrome",
+//       "request": "launch",
+//       "name": "Launch Chrome",
+//       "address": "127.0.0.1",
+//       "url": "http://localhost:8000/",
+//       "webRoot": "${workspaceRoot}/app",
+//       "sourceMaps": true,
+//       "userDataDir": "${workspaceRoot}/.vscode/chrome"
+//     } */
+//   ]
+// }
 
+{
+"version": "0.2.0",
+"configurations": [
+{
+"type": "chrome",
+"request": "launch",
+"name": "Launch Chrome",
+"url": "http://localhost:8000/",
+"webRoot": "${workspaceRoot}/app",
+"sourceMaps": true,
+"userDataDir": "${workspaceRoot}/.vscode/chrome"
+}
+]
+} 
 

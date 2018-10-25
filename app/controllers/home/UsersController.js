@@ -46,7 +46,9 @@ mainApp.controller("UsersController", [
         self.users = [];
         self.submit = submit;
         self.reset = reset;
-
+        self.fetchUser = fetchUser;
+        
+       
         function getUserData() {
             console.log("Inside GetUserData method");
             //console.log(StorageService.get("USER.ID"));
@@ -65,17 +67,19 @@ mainApp.controller("UsersController", [
                 createUser(self.user);
                 
             } else {
-                updateUser(self.user, self.user.id);
+               // updateUser(self.user, self.user.id);
                 console.log('User updated with id ', self.user.id);
             }
             reset();
         }
 
-        function updateUser(user, id) {
-            UserService.updateUser(user, id)
+        function fetchUser(id) {
+            alert("fetch user");
+            UserService.fetchUser(id)
                 .then(
                     function (successResponse) {
                         console.log(successResponse);
+                      
                     },
                     function (errResponse) {
                         console.error('Error while updating User');
@@ -138,7 +142,7 @@ mainApp.controller("UsersController", [
             );
 
         }
-
+      
 
         $scope.confirmPopup = function (x) {
             $ngConfirm({
@@ -166,6 +170,7 @@ mainApp.controller("UsersController", [
 
         }
 
+        
 
     }
 ]);

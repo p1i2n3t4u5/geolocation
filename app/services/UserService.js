@@ -16,7 +16,7 @@ mainApp.factory(
         var factory = {
             fetchAllUsers: fetchAllUsers,
             createUser: createUser,
-            updateUser: updateUser,
+            fetchUser: fetchUser,
             deleteUser: deleteUser,
             capcha: capcha
         };
@@ -78,11 +78,13 @@ mainApp.factory(
         }
 
 
-        function updateUser(user, id) {
+        function fetchUser(id) {
+            alert("service fetchuser");
             var deferred = $q.defer();
-            $http.put(REST_SERVICE_URI + id, user)
+            $http.get(REST_SERVICE_URI +"/"+id)
                 .then(
                     function (response) {
+                        console.log(response);
                         deferred.resolve(response.data);
                     },
                     function (errResponse) {
