@@ -33,7 +33,8 @@ var mainApp = angular.module("myapp", [
   "jcs-autoValidate",
   "vcRecaptcha",
   "smart-table",
-  "ngMap"
+  "ngMap",
+  "cp.ngConfirm"
 ]);
 
 mainApp.run(function(defaultErrorMessageResolver) {
@@ -127,7 +128,7 @@ mainApp.run([
     $http.get("modules.json").success(function(data) {
       angular.forEach(data, function(value, key) {
         var getExistingState = $state.get(value.name);
-
+//console.log("getExistingState "+getExistingState);
         if (getExistingState !== null) {
           return;
         }
@@ -138,7 +139,8 @@ mainApp.run([
           abstract: value.abstract,
           controller: value.controller,
           controllerAs: value.controllerAs,
-          views: {}
+          views: {},
+          
         };
 
         angular.forEach(value.views, function(view) {
@@ -148,6 +150,8 @@ mainApp.run([
         });
 
         $stateProviderRef.state(value.name, state);
+        console.log($stateProviderRef);
+       
       });
       // Configures $urlRouter's listener *after* your custom listener
 

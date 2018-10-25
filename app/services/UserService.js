@@ -10,7 +10,7 @@
 
 mainApp.factory(
     "UserService",
-    function($http, $q, cfg) {
+    function ($http, $q, cfg) {
         var REST_SERVICE_URI = cfg.url + "/user";
 
         var factory = {
@@ -23,15 +23,15 @@ mainApp.factory(
 
         return factory;
 
-      function fetchAllUsers() {
+        function fetchAllUsers() {
             var deferred = $q.defer();
             $http.get(REST_SERVICE_URI)
                 .then(
-                    function(response) {
+                    function (response) {
                         deferred.resolve(response.data);
-                        console.log("Response data "+response.data);
+                        console.log("Response data " + response.data);
                     },
-                    function(errResponse) {
+                    function (errResponse) {
                         console.error('Error while fetching Users');
                         deferred.reject(errResponse);
                     }
@@ -41,12 +41,12 @@ mainApp.factory(
 
         function capcha(user) {
             var deferred = $q.defer();
-            $http.post(REST_SERVICE_URI+"capcha", user)
+            $http.post(REST_SERVICE_URI + "capcha", user)
                 .then(
-                    function(response) {
+                    function (response) {
                         deferred.resolve(response.data);
                     },
-                    function(errResponse) {
+                    function (errResponse) {
                         console.error('Error while creating User');
                         deferred.reject(errResponse);
                     }
@@ -56,18 +56,20 @@ mainApp.factory(
 
 
         function createUser(user) {
-            alert("service createuser "+JSON.stringify(user));
+
             var deferred = $q.defer();
-            alert(" "+REST_SERVICE_URI);
-            alert(user);
-            $http.post(REST_SERVICE_URI, user)
+            $http({
+                url: REST_SERVICE_URI,
+                method: "POST",
+                data: user
+            })
                 .then(
-                    function(response) {
-                        alert("Service called user success");
+                    function (response) {
+                        console.log("Service called user success");
                         deferred.resolve(response.data);
                     },
-                    function(errResponse) {
-                        alert("Service called user failed");
+                    function (errResponse) {
+                        console.log("Service called user failed");
                         console.error('Error while creating User');
                         deferred.reject(errResponse);
                     }
@@ -80,10 +82,10 @@ mainApp.factory(
             var deferred = $q.defer();
             $http.put(REST_SERVICE_URI + id, user)
                 .then(
-                    function(response) {
+                    function (response) {
                         deferred.resolve(response.data);
                     },
-                    function(errResponse) {
+                    function (errResponse) {
                         console.error('Error while updating User');
                         deferred.reject(errResponse);
                     }
@@ -93,12 +95,12 @@ mainApp.factory(
 
         function deleteUser(id) {
             var deferred = $q.defer();
-            $http.delete(REST_SERVICE_URI + id)
+            $http.delete(REST_SERVICE_URI +"/"+id)
                 .then(
-                    function(response) {
+                    function (response) {
                         deferred.resolve(response.data);
                     },
-                    function(errResponse) {
+                    function (errResponse) {
                         console.error('Error while deleting User');
                         deferred.reject(errResponse);
                     }
