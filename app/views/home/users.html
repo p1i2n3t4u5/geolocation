@@ -10,10 +10,10 @@
         }
     </style>
 
-    <button type="button" ng-click="toggle()" class="btn btn-sm btn-success">
+    <button type="button" ng-click="toggle()" class="btn btn-sm btn-success" ng-model=flag>
         <i class="glyphicon glyphicon-plus">
         </i> Add User
-    </button>
+    </button>  {{showForm}} {{flag}}
     <form>
         <label for="predicate">selected predicate:</label>
         <select class="form-control" id="predicate" ng-model="selectedPredicate" ng-options="predicate for predicate in predicates"></select>
@@ -56,7 +56,7 @@
                 <td>{{x.login}}</td>
                 <td>{{x.phone}}</td>
                 <td>
-                    <button type="button" ng-click="ctrl.fetchUser(x.id)">
+                    <button type="button" ng-click="editPopup(x)">  <!--ctrl.fetchUser(x.id)-->
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
                     <!-- <a href="javascript:angular.element(document.getElementById('UsersController')).scope().highlighting();">
@@ -81,7 +81,7 @@
     </table>
 
     <div class="innter-form" ng-show="showForm">
-        <form role="form" name="registerForm" method="post" ng-submit="ctrl.submit()" novalidate="novalidate">
+        <form role="form" name="registerForm" method="post"  novalidate="novalidate">
             <div class="form-group">
                 <input type="hidden" ng-model="ctrl.user.id" />
             </div>
@@ -120,7 +120,13 @@
                 <input type="password" ng-model="ctrl.user.repassword" ng-pattern="/[a-zA-Z0-9]+/" ng-minlength="8" name="registerrepassword"
                     placeholder="Re-Password" class="form-control" id="register-repassword" required="required">
             </div>
-            <button type="submit" class="btn">Sign me up!</button>
+            <div ng-if="flag===0"> <button type="submit" class="btn" ng-click="ctrl.submit()">Sign me up!</button></div>
+            <div ng-if="flag===1"> <button type="button" class="btn" ng-click="ctrl.fetchUser()">Update User</button>
+                <button type="reset" class="btn">Reset</button>
+            
+            </div>
+
+           
         </form>
     </div>
 </div>

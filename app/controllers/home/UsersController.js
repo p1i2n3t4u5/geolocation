@@ -47,8 +47,16 @@ mainApp.controller("UsersController", [
         self.submit = submit;
         self.reset = reset;
         self.fetchUser = fetchUser;
-        
-       
+        $scope.flag = 0;
+
+        $scope.showForm = false;
+
+        $scope.toggle = function () {
+            
+            $scope.flag = 0;
+            $scope.showForm = !$scope.showForm;
+        }
+
         function getUserData() {
             console.log("Inside GetUserData method");
             //console.log(StorageService.get("USER.ID"));
@@ -65,21 +73,27 @@ mainApp.controller("UsersController", [
             if (self.user.id === null) {
                 console.log('Saving New User', self.user);
                 createUser(self.user);
-                
+
             } else {
-               // updateUser(self.user, self.user.id);
+                // updateUser(self.user, self.user.id);
                 console.log('User updated with id ', self.user.id);
             }
             reset();
         }
 
         function fetchUser(id) {
-            alert("fetch user");
+
             UserService.fetchUser(id)
                 .then(
                     function (successResponse) {
-                        console.log(successResponse);
-                      
+                        console.log("ss" + JSON.stringify(successResponse));
+
+
+                        self.user = successResponse;
+                        self.user.password = "";
+                        console.log(self.user);
+
+
                     },
                     function (errResponse) {
                         console.error('Error while updating User');
@@ -109,10 +123,7 @@ mainApp.controller("UsersController", [
         $scope.predicates = ["id", "firstName", "lastName", "login", "phone"];
         $scope.selectedPredicate = $scope.predicates[1];
 
-        $scope.showForm = false;
-        $scope.toggle = function () {
-            $scope.showForm = !$scope.showForm;
-        }
+
         function reset() {
             self.user = {
                 id: null,
@@ -142,7 +153,7 @@ mainApp.controller("UsersController", [
             );
 
         }
-      
+
 
         $scope.confirmPopup = function (x) {
             $ngConfirm({
@@ -170,7 +181,41 @@ mainApp.controller("UsersController", [
 
         }
 
-        
+        $scope.editPopup = function (x) {
+            $ngConfirm({
+                title: 'Edit user?',
+                content: 'Click on edit User to continue.',
+                theme: 'dark',
+                animation: 'rotate',
+                animationSpeed: 500,
+                buttons: {
+                    editUser: {
+                        text: 'Edit user',
+                        btnClass: 'btn-red',
+                        action: function () {
+                            $scope.flag = 1;
+                            $scope.$apply();
+                            if ($scope.showForm === false) {
+                                $scope.showForm = true;
+                                $scope.$apply();
+                            }
+
+
+                            fetchUser(x.id);
+
+                        }
+                    },
+                    cancel: function () {
+                        $scope.showForm = false;
+                        $scope.$apply();
+                    }
+                }
+
+            });
+
+        }
+
+
 
     }
 ]);

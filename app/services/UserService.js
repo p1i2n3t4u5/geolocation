@@ -79,7 +79,7 @@ mainApp.factory(
 
 
         function fetchUser(id) {
-            alert("service fetchuser");
+            
             var deferred = $q.defer();
             $http.get(REST_SERVICE_URI +"/"+id)
                 .then(
