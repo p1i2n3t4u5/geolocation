@@ -18,6 +18,7 @@ mainApp.factory(
             createUser: createUser,
             fetchUser: fetchUser,
             deleteUser: deleteUser,
+            updateUser:updateUser,
             capcha: capcha
         };
 
@@ -79,9 +80,9 @@ mainApp.factory(
 
 
         function fetchUser(id) {
-            
+
             var deferred = $q.defer();
-            $http.get(REST_SERVICE_URI +"/"+id)
+            $http.get(REST_SERVICE_URI + "/" + id)
                 .then(
                     function (response) {
                         console.log(response);
@@ -97,7 +98,7 @@ mainApp.factory(
 
         function deleteUser(id) {
             var deferred = $q.defer();
-            $http.delete(REST_SERVICE_URI +"/"+id)
+            $http.delete(REST_SERVICE_URI + "/" + id)
                 .then(
                     function (response) {
                         deferred.resolve(response.data);
@@ -110,6 +111,20 @@ mainApp.factory(
             return deferred.promise;
         }
 
-
+        function updateUser(id,user) {
+        
+            var deferred = $q.defer();
+            $http.put(REST_SERVICE_URI + "/" + id,user)
+                .then(
+                    function (response) {
+                        deferred.resolve(response.data);
+                    },
+                    function (errResponse) {
+                        console.error('Error while updating the user');
+                        deferred.reject(errResponse);
+                    }
+                );
+            return deferred.promise;
+        }
 
     });

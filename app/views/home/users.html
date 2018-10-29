@@ -13,7 +13,7 @@
     <button type="button" ng-click="toggle()" class="btn btn-sm btn-success" ng-model=flag>
         <i class="glyphicon glyphicon-plus">
         </i> Add User
-    </button>  {{showForm}} {{flag}}
+    </button> 
     <form>
         <label for="predicate">selected predicate:</label>
         <select class="form-control" id="predicate" ng-model="selectedPredicate" ng-options="predicate for predicate in predicates"></select>
@@ -81,7 +81,7 @@
     </table>
 
     <div class="innter-form" ng-show="showForm">
-        <form role="form" name="registerForm" method="post"  novalidate="novalidate">
+        <form role="form" name="registerForm" method="post"  novalidate="novalidate" ng-submit="ctrl.submit()">
             <div class="form-group">
                 <input type="hidden" ng-model="ctrl.user.id" />
             </div>
@@ -120,11 +120,12 @@
                 <input type="password" ng-model="ctrl.user.repassword" ng-pattern="/[a-zA-Z0-9]+/" ng-minlength="8" name="registerrepassword"
                     placeholder="Re-Password" class="form-control" id="register-repassword" required="required">
             </div>
-            <div ng-if="flag===0"> <button type="submit" class="btn" ng-click="ctrl.submit()">Sign me up!</button></div>
-            <div ng-if="flag===1"> <button type="button" class="btn" ng-click="ctrl.fetchUser()">Update User</button>
-                <button type="reset" class="btn">Reset</button>
-            
-            </div>
+            <!-- <div ng-if="flag===0"> <button type="submit" class="btn">Sign me up!</button></div>
+            <div ng-if="flag===1"> <button type="button" class="btn" ng-click="ctrl.updateUser()">Update User</button> -->
+                <button type="submit" class="btn"><span ng-if="flag===0">Sign me up!</span><span ng-if="flag===1"> Update User</span></button>
+                
+                    <button ng-if="flag===1" type="reset" class="btn">Reset</button>
+                 </div>
 
            
         </form>

@@ -47,12 +47,13 @@ mainApp.controller("UsersController", [
         self.submit = submit;
         self.reset = reset;
         self.fetchUser = fetchUser;
+        self.updateUser = updateUser;
         $scope.flag = 0;
 
         $scope.showForm = false;
 
         $scope.toggle = function () {
-            
+            reset();
             $scope.flag = 0;
             $scope.showForm = !$scope.showForm;
         }
@@ -69,13 +70,14 @@ mainApp.controller("UsersController", [
         }
 
         function submit() {
-
             if (self.user.id === null) {
+                $scope.flag=0;
                 console.log('Saving New User', self.user);
                 createUser(self.user);
 
             } else {
-                // updateUser(self.user, self.user.id);
+                $scope.flag=1;
+                updateUser();
                 console.log('User updated with id ', self.user.id);
             }
             reset();
@@ -86,12 +88,8 @@ mainApp.controller("UsersController", [
             UserService.fetchUser(id)
                 .then(
                     function (successResponse) {
-                        console.log("ss" + JSON.stringify(successResponse));
-
-
                         self.user = successResponse;
                         self.user.password = "";
-                        console.log(self.user);
 
 
                     },
@@ -102,6 +100,7 @@ mainApp.controller("UsersController", [
         }
 
         function createUser(user) {
+            if($scope.registerForm.$valid){
 
             UserService.createUser(user)
                 .then(
@@ -118,6 +117,7 @@ mainApp.controller("UsersController", [
                         }
                     }
                 );
+            }
         }
 
         $scope.predicates = ["id", "firstName", "lastName", "login", "phone"];
@@ -151,6 +151,26 @@ mainApp.controller("UsersController", [
                 }
 
             );
+
+        }
+
+        function updateUser() {
+            
+            if($scope.registerForm.$valid){
+               
+                UserService.updateUser(self.user.id,self.user).then(
+                    function (successResponse) {
+                        alert("user has updated successfully");
+                        getUserData();
+                    },
+                    function (errResponse) {
+                        console.error('Error while updating User');
+                    }
+    
+    
+                );
+            }
+           
 
         }
 
@@ -214,6 +234,8 @@ mainApp.controller("UsersController", [
             });
 
         }
+
+
 
 
 
