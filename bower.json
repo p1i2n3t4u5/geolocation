@@ -18,7 +18,8 @@
     "font-awesome": "fontawesome#4.7",
     "ngmap": "^1.18.4",
     "angular-smart-table": "^2.1.11",
-    "angular-confirm": "angular1-confirm#^1.1.0"
+    "angular-confirm": "angular1-confirm#^1.1.0",
+    "ng-stomp": "^0.5.0"
   },
   "resolutions": {
     "bootstrap": "3.3.7",
