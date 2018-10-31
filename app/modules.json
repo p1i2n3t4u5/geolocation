@@ -180,5 +180,33 @@
         "templateUrl": "views/home/service_two.html"
       }
     ]
+  },
+  {
+    "name": "chatone",
+    "url": "/chatone",
+    "parent": "home",
+    "abstract": false,
+    "controller": "ChatOneController",
+    "controllerAs": "ctrl",
+    "views": [
+      {
+        "name": "",
+        "templateUrl": "views/home/chat_one.html"
+      }
+    ]
+  },
+  {
+    "name": "chat",
+    "url": "/chat",
+    "parent": "home",
+    "abstract": false,
+    "controller": "ChatController",
+    "controllerAs": "ctrl",
+    "views": [
+      {
+        "name": "",
+        "templateUrl": "views/home/chat.html"
+      }
+    ]
   }
 ]
