@@ -8,7 +8,7 @@
   "scripts": {
     "update-deps": "npm update",
     "postupdate-deps": "bower update",
-    "start": "http-server -a localhost -p 8000 -c-1 ./app",
+    "start": "http-server -a localhost -p 4200 -c-1 ./app",
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
     "test-single-run": "karma start karma.conf.js --single-run",
@@ -19,13 +19,14 @@
     "update-index-async": "node -e \"var fs=require('fs'),indexFile='app/index-async.html',loaderFile='app/bower_components/angular-loader/angular-loader.min.js',loaderText=fs.readFileSync(loaderFile,'utf-8').split(/sourceMappingURL=angular-loader.min.js.map/).join('sourceMappingURL=bower_components/angular-loader/angular-loader.min.js.map'),indexText=fs.readFileSync(indexFile,'utf-8').split(/\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/).join('//@@NG_LOADER_START@@\\n'+loaderText+'    //@@NG_LOADER_END@@');fs.writeFileSync(indexFile,indexText);\""
   },
   "devDependencies": {
+    "@types/angular": "^1.6.53",
     "angular-mocks": "^1.7.5",
     "bower": "^1.8.4",
     "gulp-add-src": "^1.0.0",
     "gulp-clean-css": "^3.10.0",
     "gulp-concat": "^2.6.1",
     "gulp-filter": "^5.1.0",
-    "gulp-main-bower-files": "^1.6.3",
+    "gulp-main-bower-files": "^1.7.0",
     "gulp-order": "^1.2.0",
     "gulp-order-bemdeps": "^0.8.1",
     "gulp-uglify": "^3.0.1",
@@ -39,15 +40,17 @@
     "protractor": "^4.0.9"
   },
   "dependencies": {
+    "@types/npm": "^2.0.29",
     "angular-recaptcha": "^4.2.0",
     "angular-smart-table": "^2.1.11",
-    "bootstrap": "^4.1.3",
+    "bootstrap": "^4.2.1",
     "chartist": "^0.11.0",
     "gulp": "^3.9.1",
     "install": "^0.12.2",
     "jquery": "^3.3.1",
     "ng-stomp": "^0.5.0",
-    "ngmap": "^1.18.4",
-    "npm": "^6.4.1"
+    "ngmap": "^1.18.5",
+    "npm": "^6.5.0",
+    "typings": "^2.1.1"
   }
 }

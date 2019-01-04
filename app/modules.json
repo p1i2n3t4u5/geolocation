@@ -208,6 +208,19 @@
         "templateUrl": "views/home/chat.html"
       }
     ]
+  },
+  {
+    "name": "chattwo",
+    "url": "/chattwo",
+    "parent": "home",
+    "abstract": false,
+    "controller": "ChatTwoController",
+    "controllerAs": "ctrl",
+    "views": [
+      {
+        "name": "",
+        "templateUrl": "views/home/chat_two.html"
+      }
+    ]
   }
 ]
-

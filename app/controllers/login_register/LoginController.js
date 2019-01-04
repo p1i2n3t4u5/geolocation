@@ -17,7 +17,7 @@ mainApp.controller("LoginController", [
   "$state",
   "StorageService",
   "cfg",
-  function(
+  function (
     $log,
     $scope,
     $location,
@@ -35,12 +35,12 @@ mainApp.controller("LoginController", [
     function authenticateUser() {
       console.log(
         "inside login controller" +
-          this.loginForm.username +
-          "  " +
-          this.loginForm.password
+        this.loginForm.username +
+        "  " +
+        this.loginForm.password
       );
       LoginService.authenticateUser(this.loginForm).then(
-        function(successResponse) {
+        function (successResponse) {
           console.log(successResponse);
           //STORING USER DATA TO SESSION STORAGE
           StorageService.set(cfg.USER.ID, successResponse.id);
@@ -53,7 +53,7 @@ mainApp.controller("LoginController", [
 
           $state.go("home");
         },
-        function(errResponse) {
+        function (errResponse) {
           console.error("Error while creating User");
           if (errResponse.status === 409) {
             var message = "<strong>User with same login already exist</strong>";
@@ -63,8 +63,6 @@ mainApp.controller("LoginController", [
       );
     }
 
-    // function authenticateUser() {
-    //   $state.go("home");
-    // }
+    
   }
 ]);

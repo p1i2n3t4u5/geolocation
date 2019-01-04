@@ -157,6 +157,7 @@ mainApp.run([
 
       $urlRouter.sync();
       $urlRouter.listen();
+      
     });
   }
 ]);
