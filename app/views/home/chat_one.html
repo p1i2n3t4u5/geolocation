@@ -21,19 +21,25 @@
         <h2>Spring WebSocket Chat Demo</h2>
       </div>
       <div class="connecting" ng-if="ctrl.connectingMSG">Connecting...</div>
-      <div class="connecting" ng-if="!ctrl.connectingMSG">
-        <div class="listOfPeople" ng-repeat="people in ctrl.lisOfPeople">{{people}}</div>
-      </div>
 
-      <ul id="messageArea"></ul>
-      <form id="messageForm" name="messageForm" ng-submit="ctrl.sendMessage()" nameForm="messageForm">
-        <div class="form-group">
-          <div class="input-group clearfix">
-            <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control" />
-            <button type="submit" class="primary">Send</button>
+      <div class="chat-box">
+        <div class="people-list">
+          <div class="connecting" ng-if="!ctrl.connectingMSG">
+            <div class="listOfPeople" ng-repeat="people in ctrl.lisOfPeople">{{people}}</div>
           </div>
         </div>
-      </form>
+        <div class="mssg-list">
+          <ul id="messageArea"></ul>
+          <form id="messageForm" name="messageForm" ng-submit="ctrl.sendMessage()" nameForm="messageForm">
+            <div class="form-group">
+              <div class="input-group clearfix">
+                <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control" />
+                <button type="submit" class="primary">Send</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>
