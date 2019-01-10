@@ -39,6 +39,8 @@ mainApp.controller("LoginController", [
         "  " +
         this.loginForm.password
       );
+
+
       LoginService.authenticateUser(this.loginForm).then(
         function (successResponse) {
           console.log(successResponse);
@@ -54,7 +56,7 @@ mainApp.controller("LoginController", [
           $state.go("home");
         },
         function (errResponse) {
-          console.error("Error while creating User");
+          console.error("Error while Logging User");
           if (errResponse.status === 409) {
             var message = "<strong>User with same login already exist</strong>";
             Flash.create("danger", message);

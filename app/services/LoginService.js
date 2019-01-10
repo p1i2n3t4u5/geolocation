@@ -28,7 +28,7 @@ mainApp.factory("LoginService", function($http, $q, cfg) {
         deferred.resolve(response.data);
       },
       function(errResponse) {
-        console.error("Error while creating User");
+        console.error("Error while logging User");
         deferred.reject(errResponse);
       }
     );
