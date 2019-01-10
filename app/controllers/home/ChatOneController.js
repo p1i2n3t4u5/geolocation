@@ -139,7 +139,7 @@ mainApp.controller("ChatOneController", [
         self.messages.push( {
               'user' : payload.sender,
               'message' : payload.content,
-              'time' : Date.UTC.toString() ,
+              'time' : (new Date()).toDateString() ,
               'isSender': payload.sender == self.username ? true : false
               }
               
