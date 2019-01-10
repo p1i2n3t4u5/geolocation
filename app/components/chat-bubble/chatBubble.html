@@ -1,0 +1,9 @@
+<div class="chat-bubble" ng-controller="ChatOneController as ctrl">
+    <div class="chat-bubble" ng-class="'right-side': message.isSender" ng-repeat="message is ctrl.messages">
+            <p>
+                {{message.message}}
+            </p>
+            <span class="chat-bubble-user">{{message.user}}</span>
+            <span class="chat-bubble-user time">{{message.time}}</span>
+    </div>
+</div>

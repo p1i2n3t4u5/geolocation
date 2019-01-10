@@ -619,3 +619,32 @@ button.accent {
     font-size: 1.1em;
   }
 }
+
+.chat-bubble {
+  width: 80%;
+  background-color: #00cf88;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 0 10px 10px 0;
+}
+
+.chat-bubble.right-side {
+  background-color: #11bbcc;
+  float: right;
+  border-radius: 10px 0 0 10px;
+  text-align: right;
+}
+
+.chat-bubble p {
+  margin: 0
+}
+
+.chat-bubble-user {
+  font-size: 0.7em;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.chat-bubble-user.time {
+  margin-right: 0;
+}
