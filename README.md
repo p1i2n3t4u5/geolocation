@@ -1,3 +1,10 @@
+# Run NPM install and Bower Install
+# Please install npm install http-server -g
+
+Once you install all dependencies and run NPM Start , below screen should apear.
+![Sample Screen](https://github.com/p1i2n3t4u5/geolocationapp/blob/master/samplescreenshot/InitialScreen.png)
+
+
 # `angular-seed` — the seed for AngularJS apps
 
 This project is an application skeleton for a typical [AngularJS][angularjs] web app. You can use it
