@@ -633,6 +633,8 @@ button.accent {
   color: white;
   padding: 6px 12px;
   border-radius: 0 10px 10px 0;
+  float: left;
+  margin: 5px 0;
 }
 
 .chat-bubble.right-side {
