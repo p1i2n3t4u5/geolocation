@@ -487,6 +487,7 @@ button.accent {
   overflow-y: scroll;
   padding: 0 20px 0px 20px;
   height: calc(100% - 150px);
+  width: 80%;
 }
 
 #chat-page #messageForm {
@@ -545,6 +546,10 @@ button.accent {
 
 #chat-page .chat-message p {
   color: #43464b;
+}
+
+#messageForm .input-group {
+  width: 80%;
 }
 
 #messageForm .input-group input {
