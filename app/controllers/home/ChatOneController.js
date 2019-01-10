@@ -46,6 +46,8 @@ mainApp.controller("ChatOneController", [
     var messageInput;
     self.showUserNamePage = true;
     self.username = "";
+    self.connectingMSG = true;
+    self.lisOfPeople = [];
     var connectingElement;
 
 
@@ -106,7 +108,7 @@ mainApp.controller("ChatOneController", [
       $scope.payload = payload;
 
       //callback method  starts
-      var message = JSON.parse(payload.body);
+      var message = payload;
 
       var messageElement = document.createElement("li");
 
@@ -132,14 +134,22 @@ mainApp.controller("ChatOneController", [
         messageElement.appendChild(usernameElement);
       }
 
-      var textElement = document.createElement("p");
-      var messageText = document.createTextNode(message.content);
-      textElement.appendChild(messageText);
-      messageElement.appendChild(textElement);
-      messageArea.appendChild(messageElement);
-      messageArea.scrollTop = messageArea.scrollHeight;
+      chatScreenData(payload);
+      
+
+      
 
       //callback method  ends
+    }
+
+    // For Second Screen ...
+    function chatScreenData(data){
+      if(data){
+        self.showUserNamePage = false;
+        self.connectingMSG = false;
+        self.lisOfPeople.push(data.content);
+        $scope.$apply();
+      }
     }
 
     function unsubscribe() {

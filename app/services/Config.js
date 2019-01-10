@@ -5,7 +5,7 @@
  */
 
 mainApp.constant("cfg", {
-  url: "http://localhost:8080/SpringGeolocation",
+  url: "http://10.150.127.1:8080/SpringGeolocation",
   httpTimeout: 5000,
 
   LOGIN_TYPE: {
