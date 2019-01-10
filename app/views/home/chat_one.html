@@ -30,7 +30,7 @@
         </div>
         <div class="mssg-list">
           <ul id="messageArea">
-              <div class="chat-bubble-container" ng-controller="ChatOneController as ctrl">
+              <div class="chat-bubble-container">
                   <div class="chat-bubble" ng-class="{'right-side': message.isSender}" ng-repeat="message in ctrl.messages">
                     <p>
                         {{message.message}}

@@ -48,28 +48,23 @@ mainApp.controller("ChatOneController", [
     self.username = "";
     self.connectingMSG = true;
     self.lisOfPeople = [];
+    self.msg1 = [];
     var connectingElement;
 
     self.msg = '';
     self.messages = [
-      {
-        user: 'Pintu',
-        message: 'A sample message',
-        time: 'Jan 01, 2019 4:28PM',
-        isSender: true
-      },
-      {
-        user: 'MIIM',
-        message: 'Different message',
-        time: 'Jan 01, 2019 5:28PM',
-        isSender: false
-      },
-      {
-        user: 'WOW',
-        message: 'Same message again',
-        time: 'Jan 01, 2019 3:28PM',
-        isSender: true
-      }
+      // {
+      //   'user': 'Pintu',
+      //   'message': 'A sample message',
+      //   'time' : 'Jan 01, 2019 4:28PM',
+      //   'isSender' : true
+      // },
+      // {
+      //   'user': 'MIIM',
+      //   'message': 'Different message',
+      //   'time': 'Jan 01, 2019 5:28PM',
+      //   'isSender': false
+      // }
     ];
 
 
@@ -141,19 +136,22 @@ mainApp.controller("ChatOneController", [
         messageElement.classList.add("event-message");
         message.content = message.sender + " left!";
       } else {
-        messageElement.classList.add("chat-message");
-
-        var avatarElement = document.createElement("i");
-        var avatarText = document.createTextNode(message.sender[0]);
-        avatarElement.appendChild(avatarText);
-        avatarElement.style["background-color"] = getAvatarColor(
-          message.sender
-        );
-        messageElement.appendChild(avatarElement);
-        var usernameElement = document.createElement("span");
-        var usernameText = document.createTextNode(message.sender);
-        usernameElement.appendChild(usernameText);
-        messageElement.appendChild(usernameElement);
+        self.messages.push( {
+              'user' : payload.sender,
+              'message' : payload.content,
+              'time' : Date.UTC.toString() ,
+              'isSender': payload.sender == self.username ? true : false
+              }
+              
+          );
+          // self.msg1.push({
+          //   'user' : payload.sender,
+          //   'message' : payload.content,
+          //   'time' : Date.UTC.toString() ,
+          //   'isSender': payload.sender == self.username ? true : false
+          //   });
+          payload ='';
+        
       }
 
       chatScreenData(payload);
@@ -171,8 +169,9 @@ mainApp.controller("ChatOneController", [
         self.connectingMSG = false;
         // username = data.sender;
         self.lisOfPeople.push(data.content);
-        $scope.$apply();
+        
       }
+      $scope.$apply();
     }
 
     function unsubscribe() {
@@ -197,7 +196,7 @@ mainApp.controller("ChatOneController", [
 
       // Send message
       $stomp.send("/app/chat.sendMessage",
-        JSON.stringify(chatMessage), {
+        chatMessage, {
           priority: 9,
           custom: 42 // Custom Headers
         }
