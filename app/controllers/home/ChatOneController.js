@@ -42,9 +42,12 @@ mainApp.controller("ChatOneController", [
     var connectHeaders = "";
     var subscription;
     var stompClient = null;
-    var username = null;
+
     var messageInput;
-    var showUserNamePage = true;
+    self.showUserNamePage = true;
+    self.username = "";
+    var connectingElement;
+
 
     var colors = [
       "#2196F3",
@@ -78,20 +81,20 @@ mainApp.controller("ChatOneController", [
 
     function onSuccess() {
       subscription = $stomp.subscribe(
-        REST_SERVICE_URI + "/topic/public",
-        onSubscription,
-        {
+        "/topic/public",
+        onSubscription, {
           headers: "are awesome"
         }
       );
 
       // Tell your username to the server
-      stompClient.send(REST_SERVICE_URI + "/app/chat.addUser",
-        {},
-        JSON.stringify({ sender: username, type: 'JOIN' })
-      )
+      $stomp.send("/app/chat.addUser", {
+        sender: self.username,
+        type: 'JOIN'
+      }, {
+        headers: "are awesome"
+      });
     }
-
 
     function onFailuer() {
       connectingElement.textContent =
@@ -161,10 +164,8 @@ mainApp.controller("ChatOneController", [
       };
 
       // Send message
-      $stomp.send(
-        REST_SERVICE_URI + "/app/chat.sendMessage",
-        JSON.stringify(chatMessage),
-        {
+      $stomp.send("/app/chat.sendMessage",
+        JSON.stringify(chatMessage), {
           priority: 9,
           custom: 42 // Custom Headers
         }
