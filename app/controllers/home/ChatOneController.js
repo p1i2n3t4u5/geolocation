@@ -50,7 +50,7 @@ mainApp.controller("ChatOneController", [
     self.lisOfPeople = [];
     var connectingElement;
 
-
+    self.msg = '';
     self.messages = [
       {
         user: 'Pintu',
@@ -169,6 +169,7 @@ mainApp.controller("ChatOneController", [
       if(data){
         self.showUserNamePage = false;
         self.connectingMSG = false;
+        // username = data.sender;
         self.lisOfPeople.push(data.content);
         $scope.$apply();
       }
@@ -188,10 +189,9 @@ mainApp.controller("ChatOneController", [
 
     // send function starts
     function sendMessage() {
-      var messageContent = messageInput.value.trim();
       var chatMessage = {
-        sender: username,
-        content: messageInput.value,
+        sender: self.username,
+        content:  self.msg,
         type: "CHAT"
       };
 
@@ -202,7 +202,7 @@ mainApp.controller("ChatOneController", [
           custom: 42 // Custom Headers
         }
       );
-      messageInput.value = "";
+      self.msg = "";
     }
     // send function ends
     //////////////////////////////////////////////////////////
