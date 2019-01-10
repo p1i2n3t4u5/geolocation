@@ -51,6 +51,28 @@ mainApp.controller("ChatOneController", [
     var connectingElement;
 
 
+    self.messages = [
+      {
+        user: 'Pintu',
+        message: 'A sample message',
+        time: 'Jan 01, 2019 4:28PM',
+        isSender: true
+      },
+      {
+        user: 'MIIM',
+        message: 'Different message',
+        time: 'Jan 01, 2019 5:28PM',
+        isSender: false
+      },
+      {
+        user: 'WOW',
+        message: 'Same message again',
+        time: 'Jan 01, 2019 3:28PM',
+        isSender: true
+      }
+    ];
+
+
     var colors = [
       "#2196F3",
       "#32c787",
